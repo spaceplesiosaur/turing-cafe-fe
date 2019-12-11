@@ -23,10 +23,10 @@ export default class Form extends Component {
   render() {
     return (
       <section className="form">
-        <input className="formInput" name="name" value={this.state.name} onChange={this.handleChange}></input>
-        <input className="formInput" name="date" value={this.state.date} onChange={this.handleChange}></input>
-        <input className="formInput" name="time" value={this.state.time} onChange={this.handleChange}></input>
-        <input className="formInput" name="guests" value={this.state.guests} onChange={this.handleChange}></input>
+        <input className="formInput" id="nameInput" name="name" value={this.state.name} onChange={this.handleChange}></input>
+        <input className="formInput" id="dateInput" name="date" value={this.state.date} onChange={this.handleChange}></input>
+        <input className="formInput" id="timeInput" name="time" value={this.state.time} onChange={this.handleChange}></input>
+        <input className="formInput" id="guestsInput" name="guests" value={this.state.guests} onChange={this.handleChange}></input>
         <button className="formButton" onClick={this.setUser}>Make Reservation</button>
       </section>
     )

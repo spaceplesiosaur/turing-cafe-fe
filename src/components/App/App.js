@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   addTable = (newTable) => {
-    console.log('NEW TABLE', newTable)
     const options = {
       method: 'POST',
       body: JSON.stringify(newTable),
@@ -31,9 +30,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({tables: [...this.state.tables, data]}))
   )
-// //data.map(table => {
-//   this.setState({tables: [...this.state.tables, table]})
-// })
+
   }
   render() {
     return (
@@ -41,7 +38,6 @@ class App extends Component {
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
           <Form
-          currentTables={this.state.tables}
           addTable={this.addTable}/>
         </div>
         <div className='resy-container'>
