@@ -33,11 +33,20 @@ describe('Form', () => {
 
   })
 
-  it('should call handleChange with correct argument when imput is changed', () => {
-    const mockName = "The Rock"
-    const mockEvent = {event: {target: {name: "name", value: "The Rock"}}}
-    const mockHandleChange = jest.fn()
+  // it('should call addTable when setUser is called', () => {
+  //   const mocksetUser = jest.fn()
+  //   const wrapper = shallow(
+  //     <Form
+  //     addTable={jest.fn()}
+  //     />)
+  //
+  //   wrapper.instance().setUser()
+  //
+  //   expect(wrapper.props.addTable).toHaveBeenCalled()
+  // })
 
+  it('should call handleChange with correct argument when imput is changed', () => {
+    const mockEvent = {target: {name: "name", value: "The Rock"}}
 
     const wrapper = shallow(
       <Form
@@ -46,7 +55,35 @@ describe('Form', () => {
 
     wrapper.find("#nameInput").simulate('change', mockEvent)
 
-    expect(mockHandleChange).toHaveBeenCalledWith(mockEvent)
+    expect(wrapper.instance().handleChange).toHaveBeenCalledWith(mockEvent.target.value)
 
+  })
+
+  it('should update name state on change', () => {
+
+    const wrapper = shallow(
+      <Form
+      addTable={jest.fn()}
+      />)
+
+    wrapper.setState({name: "name"})
+    const mockEvent = {target: {name: "name", value: "The Rock"}}
+    wrapper.find("#nameInput").simulate('change', mockEvent)
+
+    expect(wrapper.state('name')).toEqual(mockEvent.target.value)
+  })
+
+  it('should update date state on change', () => {
+
+    const wrapper = shallow(
+      <Form
+      addTable={jest.fn()}
+      />)
+
+    wrapper.setState({name: "date"})
+    const mockEvent = {target: {name: "date", value: "08/22"}}
+    wrapper.find("#dateInput").simulate('change', mockEvent)
+
+    expect(wrapper.state('date')).toEqual(mockEvent.target.value)
   })
 })
