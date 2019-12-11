@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.formInput {
+  width: 15%;
+  padding: 1em;
+  border: 1px solid black
+}
+
+.formButton {
+  width: 15%;
+  padding: 1em;
+  border: 1px solid black;
+  background-color: teal
+}
