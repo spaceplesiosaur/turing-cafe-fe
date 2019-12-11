@@ -33,18 +33,6 @@ describe('Form', () => {
 
   })
 
-  // it('should call addTable when setUser is called', () => {
-  //   const mocksetUser = jest.fn()
-  //   const wrapper = shallow(
-  //     <Form
-  //     addTable={jest.fn()}
-  //     />)
-  //
-  //   wrapper.instance().setUser()
-  //
-  //   expect(wrapper.props.addTable).toHaveBeenCalled()
-  // })
-
   it('should call handleChange with correct argument when imput is changed', () => {
     const mockEvent = {target: {name: "name", value: "The Rock"}}
 
@@ -53,11 +41,13 @@ describe('Form', () => {
       addTable={jest.fn()}
       />)
 
+    const mockHandleChange = jest.spyOn(wrapper, "handleChange")
     wrapper.find("#nameInput").simulate('change', mockEvent)
 
-    expect(wrapper.instance().handleChange).toHaveBeenCalledWith(mockEvent.target.value)
+    expect(mockHandleChange).toHaveBeenCalledWith(mockEvent.target.value)
 
   })
+  //note, this one is not passing
 
   it('should update name state on change', () => {
 
